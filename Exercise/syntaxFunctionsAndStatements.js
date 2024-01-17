@@ -39,15 +39,18 @@ function timeToWalk(steps, stride, speed) {
     seconds = 0;
   let distance = steps * stride;
   let breaktime = Math.floor(distance / 500);
-  let timeWalking = (distance / speed) * 3.6 + breaktime;
+  let timeWalking = (distance / speed) * 3.6 + breaktime *60;
   minutes = Math.floor(timeWalking / 60);
-  seconds = Math.floor(timeWalking % 60);
+  seconds = Math.ceil(timeWalking % 60);
   hours = Math.floor(timeWalking / 3600);
   hours < 10 ? (hours = `0${hours}`) : hours;
   minutes < 10 ? (minutes = `0${minutes}`) : minutes;
   seconds < 10 ? (seconds = `0${seconds}`) : seconds;
   console.log(`${hours}:${minutes}:${seconds}`);
 }
+
+timeToWalk (4000, 0.60, 5);
+timeToWalk (2564, 0.70, 5.5)
 
 function roadRadar(speed, area) {
   let limit = 0;
