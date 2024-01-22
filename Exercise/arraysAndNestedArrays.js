@@ -180,8 +180,10 @@ function diagonalAttack(arr) {
     copyOfMain = [],
     copyOfSecond = [];
   matrix.forEach((row) => {
-    mainDiag += row[firstIndex]; copyOfMain.push(row[firstIndex++])
-    secondDiag += row[secondIndex]; copyOfSecond.push(row[secondIndex--])
+    mainDiag += row[firstIndex];
+    copyOfMain.push(row[firstIndex++]);
+    secondDiag += row[secondIndex];
+    copyOfSecond.push(row[secondIndex--]);
   });
   if (mainDiag !== secondDiag) {
     matrix.forEach((x) => console.log(x.join(" ")));
@@ -190,18 +192,9 @@ function diagonalAttack(arr) {
     firstIndex = 0;
     secondIndex = matrix[0].length - 1;
     matrix.forEach((row) => {
-        row[firstIndex] = copyOfMain[firstIndex++];
-        row[secondIndex] = copyOfSecond[secondIndex--];
-    })
-    matrix.forEach((x) => console.log(x.join(" "))); 
+      row[firstIndex] = copyOfMain[firstIndex];
+      row[secondIndex--] = copyOfSecond[firstIndex++];
+    });
+    matrix.forEach((x) => console.log(x.join(" ")));
   }
 }
-diagonalAttack([
-  "5 3 12 3 1",
-  "11 4 23 2 5",
-  "101 12 3 21 10",
-  "1 4 5 2 2",
-  "5 22 33 11 1",
-]);
-console.log("-----------------------------------------------------");
-diagonalAttack(["1 1 1", "1 1 1", "1 1 0"]);
