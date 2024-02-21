@@ -5,4 +5,3 @@ function extractText() {
     textarea.value += node.textContent + "\n";
   }
 }
- 
